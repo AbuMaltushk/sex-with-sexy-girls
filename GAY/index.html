@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Python Script</title>
+    <style>
+        .message-box {
+            border: 1px solid #333;
+            padding: 15px;
+            margin: 20px;
+            background-color: #f4f4f9;
+            font-family: monospace;
+            color: #333;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Retrieve and Compare Configurations</h1>
+<button onclick="runScript()">Run Script</button>
+
+<div class="message-box" id="output-box">
+    Click "Run Script" to execute the Python code.
+</div>
+
+<script>
+    async function runScript() {
+        const outputBox = document.getElementById('output-box');
+        outputBox.textContent = "Running script...";
+
+        try {
+            const response = await fetch('/run-script');
+            const data = await response.json();
+            outputBox.textContent = data.result || "No differences found between the configs.";
+        } catch (error) {
+            outputBox.textContent = "An error occurred: " + error.message;
+        }
+    }
+</script>
+
+</body>
+</html>
