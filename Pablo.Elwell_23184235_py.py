@@ -3,7 +3,7 @@ from netmiko import ConnectHandler
 # Device details
 device = {
     'device_type': 'cisco_ios',
-    'host': '192.168.1.1',
+    'host': '172.16.56.101',
     'username': 'cisco',
     'password': 'cisco123!',
     'secret': 'class123!'
@@ -21,8 +21,8 @@ commands1 = [
 
 # Configure another interface
 commands2 = [
-    'interface GigabitEthernet0/0',
-    'ip address 192.168.2.1 255.255.255.0',
+    'interface GigabitEthernet0/2',
+    'ip address 192.168.1.0 255.255.255.0',
     'no shutdown',
     'exit'
 ]
